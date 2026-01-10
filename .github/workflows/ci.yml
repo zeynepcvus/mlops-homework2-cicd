@@ -43,11 +43,13 @@ jobs:
       
       - name: Run unit tests
         run: |
+          export PYTHONPATH="${PYTHONPATH}:${PWD}"
           pytest tests/test_feature_utils.py -v --cov=src/feature_utils --cov-report=term-missing
         continue-on-error: false
       
       - name: Run component/integration tests
         run: |
+          export PYTHONPATH="${PYTHONPATH}:${PWD}"
           pytest tests/test_api_integration.py -v
         continue-on-error: false
   
